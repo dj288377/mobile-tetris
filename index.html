@@ -5,258 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Mobile Tetris</title>
     <style>
-    body {
-        background: #202028;
-        color: #fff;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 1em;
-        text-align: center;
-        margin: 0;
-        padding: 10px;
-        touch-action: manipulation;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-    h2 {
-        margin: 10px 0 5px 0;
-        font-size: 1.1em;
-    }
-    #game-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    #main-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 15px;
-        margin: 0 auto;
-    }
-    .side-panel {
-        width: 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-    }
-    canvas {
-        border: 3px solid #fff;
-        background: #000;
-    }
-    #controls {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    .control-row {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-    .btn {
-        background: #444;
-        border: 2px solid #555;
-        border-radius: 15px;
-        color: #fff;
-        font-size: 20px;
-        width: 80px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        user-select: none;
-    }
-    .btn:active {
-        background: #555;
-    }
-</style>
-</head>
-<style>
-    body {
-        background: #202028;
-        color: #fff;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 1em;
-        text-align: center;
-        margin: 0;
-        padding: 5px 0;
-        touch-action: manipulation;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        box-sizing: border-box;
-    }
-    h1#title {
-        font-size: 3em;
-        font-weight: bold;
-        color: #fff;
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FF0D72, 0 0 20px #FF0D72, 0 0 25px #FF0D72;
-        margin: 0 0 10px 0;
-        font-family: 'Courier New', Courier, monospace;
-    }
-    h2 {
-        margin: 10px 0 5px 0;
-        font-size: 1.1em;
-    }
-    #game-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    #main-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 15px;
-        margin: 0 auto;
-    }
-    .side-panel {
-        width: 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-    }
-    canvas {
-        border: 3px solid #fff;
-        background: #000;
-    }
-    #controls {
-        margin-top: 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    .control-row {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-    .btn {
-        background: #444;
-        border: 2px solid #555;
-        border-radius: 15px;
-        color: #fff;
-        font-size: 20px;
-        width: 80px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        user-select: none;
-    }
-    .btn:active {
-        background: #555;
-    }
-</style>
-</head>
-<style>
-    body {
-        background: #000; /* Force black background */
-        color: #fff;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        font-size: 1em;
-        text-align: center;
-        margin: 0;
-        padding: 5px 0;
-        touch-action: manipulation;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        box-sizing: border-box;
-    }
-    h1#title {
-        font-size: 2.5em;
-        font-weight: bold;
-        color: #fff;
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FF0D72, 0 0 20px #FF0D72;
-        margin: 0 0 5px 0;
-        font-family: 'Courier New', Courier, monospace;
-    }
-    h2 {
-        margin: 8px 0 4px 0;
-        font-size: 1em;
-    }
-    #game-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    #main-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 15px;
-        margin: 0 auto;
-    }
-    .side-panel {
-        width: 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-    canvas {
-        border: 3px solid #fff;
-        background: #000;
-    }
-    #controls {
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    .control-row {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-    .btn {
-        background: #444;
-        border: 2px solid #555;
-        border-radius: 15px;
-        color: #fff;
-        font-size: 20px;
-        width: 80px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        user-select: none;
-    }
-    .btn:active {
-        background: #555;
-    }
-</style>
+        body {
+            background: #000; /* Force black background */
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1em;
+            text-align: center;
+            margin: 0;
+            padding: 5px 0;
+            touch-action: manipulation;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        #title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Space between title and level-up message */
+            margin-bottom: 10px;
+        }
+        h1#title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FF0D72, 0 0 20px #FF0D72;
+            margin: 0; /* Remove default margin */
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h2 {
+            margin: 8px 0 4px 0;
+            font-size: 1em;
+        }
+        #game-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* For absolute positioning of game over */
+        }
+        #main-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 0 auto;
+        }
+        .side-panel {
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        canvas {
+            border: 3px solid #fff;
+            background: #000;
+        }
+        #controls {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .control-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn {
+            background: #444;
+            border: 2px solid #555;
+            border-radius: 15px;
+            color: #fff;
+            font-size: 20px;
+            width: 80px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .btn:active {
+            background: #555;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Removed old #level-up-message CSS */
+
+        #game-over-screen,
+        #level-up-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            visibility: hidden; /* Hidden by default */
+        }
+
+        #game-over-text,
+        #level-up-text {
+            font-size: 3em;
+            font-weight: bold;
+            color: #FF0D72;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #FF0D72;
+        }
+
+        #level-up-text {
+            color: #0DFF72; /* Different color for level up */
+            text-shadow: 0 0 10px #0DFF72;
+        }
+
+        #play-again-btn,
+        #level-up-continue-btn {
+            background: #0DFF72;
+            border: 2px solid #0DC2FF;
+            border-radius: 15px;
+            color: #000;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+        #play-again-btn:active,
+        #level-up-continue-btn:active {
+            background: #0DC2FF;
+        }
+    </style>
 </head>
 <body>
 
 <div id="game-wrapper">
-    <h1 id="title">TETRIS</h1>
+    <div id="title-container">
+        <h1 id="title">TETRIS</h1>
+        <!-- Removed old level-up-message div -->
+    </div>
     <div id="main-container">
         <div class="side-panel">
             <h2>NEXT</h2>
             <canvas id="next" width="80" height="80"></canvas>
             <h2>HOLD</h2>
             <canvas id="hold" width="80" height="80"></canvas>
-            <div id="info">
+            <div id="info" style="min-height: 120px;">
                 <h2>SCORE</h2>
                 <span id="score">0</span>
+                <div id="combo-info" style="visibility: hidden; margin-top: 10px;">
+                    <span id="combo" style="font-size: 1.2em; color: #FFD700; font-weight: bold;"></span>
+                </div>
                 <h2>LEVEL</h2>
                 <span id="level">1</span>
             </div>
@@ -279,7 +190,22 @@
             <div id="right" class="btn">→</div>
         </div>
     </div>
+
+    <div id="game-over-screen">
+        <div id="game-over-text">GAME OVER</div>
+        <div id="play-again-btn">Play Again</div>
+    </div>
+
+    <div id="level-up-screen">
+        <div id="level-up-text">LEVEL UP!</div>
+        <div id="level-up-continue-btn" class="btn">Continue</div>
+    </div>
 </div>
+
+    <audio id="bgm" src="tetris_bgm.mp3" loop preload="auto"></audio>
+    <audio id="place-sound" src="block_place.mp3" preload="auto"></audio>
+    <audio id="rotate-sound" src="block_rotate.mp3" preload="auto"></audio>
+    <audio id="clear-sound" src="line_clear.mp3" preload="auto"></audio>
 
 <script>
 const canvas = document.getElementById('tetris');
@@ -288,6 +214,16 @@ const nextCanvas = document.getElementById('next');
 const nextContext = nextCanvas.getContext('2d');
 const holdCanvas = document.getElementById('hold');
 const holdContext = holdCanvas.getContext('2d');
+
+const bgm = document.getElementById('bgm');
+const placeSound = document.getElementById('place-sound');
+const rotateSound = document.getElementById('rotate-sound');
+const clearSound = document.getElementById('clear-sound');
+// const levelUpMessage = document.getElementById('level-up-message'); // Removed
+const gameOverScreen = document.getElementById('game-over-screen');
+const playAgainBtn = document.getElementById('play-again-btn');
+const levelUpScreen = document.getElementById('level-up-screen'); // New element
+const levelUpContinueBtn = document.getElementById('level-up-continue-btn'); // New element
 
 context.scale(20, 20);
 nextContext.scale(20, 20);
@@ -304,29 +240,30 @@ const player = {
     matrix: null,
     score: 0,
     level: 1,
+    combo: 0,
     nextLevelScore: 100,
     next: null,
     hold: null,
     canHold: true,
 };
 
-let lastPiece = '';
-let consecutiveCount = 0;
+let bag = [];
+let gamePaused = false; // New flag for pausing game
+let animationFrameId; // To store requestAnimationFrame ID
+
+function shuffleBag() {
+    const pieces = ['I', 'L', 'J', 'O', 'T', 'S', 'Z'];
+    while (pieces.length) {
+        const rand = Math.floor(Math.random() * pieces.length);
+        bag.push(pieces.splice(rand, 1)[0]);
+    }
+}
 
 function getNextPieceType() {
-    const pieces = 'ILJOTSZ';
-    let nextPiece;
-    do {
-        nextPiece = pieces[pieces.length * Math.random() | 0];
-    } while (nextPiece === lastPiece && consecutiveCount >= 2);
-
-    if (nextPiece === lastPiece) {
-        consecutiveCount++;
-    } else {
-        consecutiveCount = 1;
+    if (bag.length === 0) {
+        shuffleBag();
     }
-    lastPiece = nextPiece;
-    return nextPiece;
+    return bag.pop();
 }
 
 function createPiece(type) {
@@ -339,7 +276,7 @@ function createPiece(type) {
     if (type === 'Z') return [[7, 7, 0], [0, 7, 7], [0, 0, 0]];
 }
 
-const colors = [null, '#FF0D72', '#0DC2FF', '#0DFF72', '#F538FF', '#FF8E0D', '#FFE138', '#3877FF'];
+const colors = [null, '#FF0D72', '#0DC2FF', '#0DFF72', '#F538FF', '#FF8E0D', '#FFE138', '#3877FF', '#FFFFFF'];
 
 function draw() {
     context.fillStyle = '#000';
@@ -435,24 +372,32 @@ function merge(arena, player) {
     });
 }
 
-function playerDrop() {
+async function playerDrop() {
     player.pos.y++;
     if (collide(arena, player)) {
         player.pos.y--;
         merge(arena, player);
+        placeSound.play();
+        const cleared = await arenaSweep();
         playerReset();
-        arenaSweep();
+        if (cleared) {
+            checkLevelUp();
+        }
         updateUI();
     }
     dropCounter = 0;
 }
 
-function playerHardDrop() {
+async function playerHardDrop() {
     while (!collide(arena, player)) { player.pos.y++; }
     player.pos.y--;
     merge(arena, player);
+    placeSound.play();
+    const cleared = await arenaSweep();
     playerReset();
-    arenaSweep();
+    if (cleared) {
+        checkLevelUp();
+    }
     updateUI();
     dropCounter = 0;
 }
@@ -466,11 +411,12 @@ function resetGame() {
     arena.forEach(row => row.fill(0));
     player.score = 0;
     player.level = 1;
+    player.combo = 0;
     player.nextLevelScore = 100;
     dropInterval = 1000;
     player.hold = null;
-    lastPiece = '';
-    consecutiveCount = 0;
+    bag = [];
+    shuffleBag(); 
     player.next = createPiece(getNextPieceType());
     player.matrix = createPiece(getNextPieceType());
     player.pos.y = 0;
@@ -479,6 +425,14 @@ function resetGame() {
     updateUI();
     drawNext();
     drawHold();
+    // bgm.play().catch(e => console.error("BGM playback failed:", e)); // Removed
+    gameOverScreen.style.visibility = 'hidden'; // Hide game over screen on reset
+    levelUpScreen.style.visibility = 'hidden'; // Hide level up screen on reset
+    gamePaused = false; // Ensure game is not paused
+    if (animationFrameId) { // Cancel any existing animation frame
+        cancelAnimationFrame(animationFrameId);
+    }
+    update(); // Start the game loop
 }
 
 function playerReset() {
@@ -488,8 +442,10 @@ function playerReset() {
     player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
     player.canHold = true;
     if (collide(arena, player)) {
-        alert('Game Over');
-        resetGame();
+        gameOverScreen.style.visibility = 'visible'; // Show game over screen
+        bgm.pause(); // Pause BGM on game over
+        gamePaused = true; // Pause the game
+        // Do not call resetGame() here, let the user click "Play Again"
     }
     drawNext();
     drawHold();
@@ -518,6 +474,7 @@ function playerRotate(dir) {
             return;
         }
     }
+    rotateSound.play();
 }
 
 function hold() {
@@ -531,37 +488,85 @@ function hold() {
         player.pos.y = 0;
         player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
         if (collide(arena, player)) {
-            resetGame();
+            gameOverScreen.style.visibility = 'visible'; // Show game over screen
+            bgm.pause(); // Pause BGM on game over
+            gamePaused = true; // Pause the game
+            // Do not call resetGame() here, let the user click "Play Again"
         }
     }
     drawHold();
 }
 
-function arenaSweep() {
-    let rowCount = 1;
-    outer: for (let y = arena.length - 1; y > 0; --y) {
+async function arenaSweep() {
+    const rowsToClear = [];
+    // First, identify all rows that are full
+    for (let y = arena.length - 1; y >= 0; --y) { // Iterate from bottom to top
+        let isRowFull = true;
         for (let x = 0; x < arena[y].length; ++x) {
-            if (arena[y][x] === 0) continue outer;
+            if (arena[y][x] === 0) {
+                isRowFull = false;
+                break;
+            }
         }
-        const row = arena.splice(y, 1)[0].fill(0);
-        arena.unshift(row);
-        ++y;
-        player.score += rowCount * 10;
-        rowCount *= 2;
+        if (isRowFull) {
+            rowsToClear.push(y);
+        }
     }
+
+    if (rowsToClear.length > 0) {
+        // Perform blink animation
+        for (let i = 0; i < 4; i++) { // Blink 4 times
+            for (const y of rowsToClear) {
+                for (let x = 0; x < arena[y].length; x++) {
+                    // Temporarily change color for blinking (8 is white)
+                    arena[y][x] = i % 2 === 0 ? 8 : 0;
+                }
+            }
+            draw(); // Redraw the arena to show the blink
+            await new Promise(resolve => setTimeout(resolve, 75)); // Pause for blink effect
+        }
+
+        // After blinking, actually remove the rows
+        // Iterate from the highest y (bottom) to lowest y (top) to avoid index issues
+        for (let i = rowsToClear.length - 1; i >= 0; --i) {
+            const y = rowsToClear[i];
+            arena.splice(y, 1); // Remove the row
+            arena.unshift(new Array(COLS).fill(0)); // Add a new empty row at the top
+        }
+
+        player.combo++;
+        let scoreFromClear = rowsToClear.length * 10 * (rowsToClear.length === 4 ? 2 : 1);
+        let comboBonus = player.combo * 5;
+        player.score += scoreFromClear + comboBonus;
+        clearSound.play();
+        return true; // Indicate that rows were cleared
+    } else {
+        player.combo = 0;
+        return false; // Indicate no rows were cleared
+    }
+}
+
+function checkLevelUp() {
     if (player.score >= player.nextLevelScore && player.level < MAX_LEVEL) {
         player.level++;
         player.nextLevelScore *= 2;
         dropInterval = 1000 - (player.level * 9);
-        alert("Level Up!\nWarning: The speed will increase.");
+        
+        levelUpScreen.style.visibility = 'visible';
+        document.getElementById('level-up-text').innerText = `LEVEL UP! Speed: ${player.level}`;
+        gamePaused = true; // Pause the game
+        bgm.pause(); // Pause BGM
     }
 }
 
 let dropCounter = 0;
 let dropInterval = 1000;
 let lastTime = 0;
+let bgmPlayed = false; // Flag to track if BGM has been played
 
 function update(time = 0) {
+    if (gamePaused) return; // Pause game loop if gamePaused is true
+
     const deltaTime = time - lastTime;
     lastTime = time;
     dropCounter += deltaTime;
@@ -569,15 +574,42 @@ function update(time = 0) {
         playerDrop();
     }
     draw();
-    requestAnimationFrame(update);
+    animationFrameId = requestAnimationFrame(update);
 }
 
 function updateUI() {
     document.getElementById('score').innerText = player.score;
     document.getElementById('level').innerText = player.level;
+    const comboInfo = document.getElementById('combo-info');
+    if (player.combo > 0) {
+        document.getElementById('combo').innerText = player.combo + ' COMBO';
+        comboInfo.style.visibility = 'visible';
+    } else {
+        comboInfo.style.visibility = 'hidden';
+    }
 }
 
+// Function to start BGM on first user interaction
+function startBGM() {
+    if (!bgmPlayed) {
+        bgm.play().then(() => {
+            bgmPlayed = true;
+            // Remove event listeners after BGM starts to avoid multiple calls
+            document.removeEventListener('keydown', startBGM);
+            document.removeEventListener('click', startBGM);
+            document.removeEventListener('touchstart', startBGM);
+        }).catch(e => console.error("BGM playback failed:", e));
+    }
+}
+
+// Add event listeners for user interaction to start BGM
+document.addEventListener('keydown', startBGM);
+document.addEventListener('click', startBGM);
+document.addEventListener('touchstart', startBGM);
+
+
 document.addEventListener('keydown', event => {
+    if (gamePaused) return; // Ignore input if game is paused
     if (event.keyCode === 37) playerMove(-1);
     else if (event.keyCode === 39) playerMove(1);
     else if (event.keyCode === 40) playerDrop();
@@ -587,19 +619,25 @@ document.addEventListener('keydown', event => {
 });
 
 // Touch Controls
-document.getElementById('left').addEventListener('click', () => playerMove(-1));
-document.getElementById('right').addEventListener('click', () => playerMove(1));
-document.getElementById('down').addEventListener('click', () => playerDrop());
-document.getElementById('rotate').addEventListener('click', () => playerRotate(1));
-document.getElementById('hard-drop').addEventListener('click', () => playerHardDrop());
-document.getElementById('hold-btn').addEventListener('click', () => hold());
+document.getElementById('left').addEventListener('click', () => { if (!gamePaused) playerMove(-1); });
+document.getElementById('right').addEventListener('click', () => { if (!gamePaused) playerMove(1); });
+document.getElementById('down').addEventListener('click', () => { if (!gamePaused) playerDrop(); });
+document.getElementById('rotate').addEventListener('click', () => { if (!gamePaused) playerRotate(1); });
+document.getElementById('hard-drop').addEventListener('click', () => { if (!gamePaused) playerHardDrop(); });
+document.getElementById('hold-btn').addEventListener('click', () => { if (!gamePaused) hold(); });
+
+playAgainBtn.addEventListener('click', resetGame); // Add event listener for Play Again button
+levelUpContinueBtn.addEventListener('click', () => {
+    levelUpScreen.style.visibility = 'hidden';
+    gamePaused = false;
+    bgm.play().catch(e => console.error("BGM resume failed:", e));
+    update(); // Resume game loop
+});
 
 resetGame();
 updateUI();
-update();
+// update(); // Initial call is now inside resetGame() to handle gamePaused state
 </script>
-
-</body>
 
 </body>
 </html>
